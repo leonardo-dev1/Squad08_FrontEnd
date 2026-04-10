@@ -1,0 +1,602 @@
+/* Definição de Variáveis CSS Globais (Cores do Design System) */
+:root {
+    --cor-fundo: #F9F6F0;     
+    --cor-texto: #2C2A25;     
+    --cor-destaque: #C85A3C;  
+    --cor-escura: #3A3831;    
+    --cor-branca: #FFFFFF;    
+}
+
+/* Reset de espaçamentos para evitar inconsistências entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Configuração base da tipografia e cores do corpo da página */
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.7; 
+    font-size: 16px;
+}
+
+/* Tipografia específica para Títulos e Logo */
+h1, h2, h3, h4, .logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+/* Estilo genérico para áreas onde entrarão fotos futuramente */
+.img-placeholder {
+    background-color: #E0DCD3;
+    border: 2px dashed #BDB9B0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8D8A82;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+/* HEADER - Configurado com Flexbox para distribuir logo e menu, e 'sticky' para acompanhar o scroll */
+header {
+    position: sticky;
+    top: 0;
+    background-color: var(--cor-fundo);
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px; 
+}
+
+.icon-placeholder {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; 
+    font-size: 10px;
+    border: 1px solid #BDB9B0;
+}
+
+.logo {
+    font-size: 26px; 
+    letter-spacing: 2.5px;
+    color: var(--cor-texto);
+    text-transform: uppercase;
+}
+
+/* NAVEGAÇÃO - Flexbox para organizar os links em linha */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 400; 
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+
+/* Pseudo-classe Hover (Interatividade) */
+nav a:hover {
+    color: var(--cor-destaque);
+}
+
+/* Estilo do botão Call to Action (Reservar) */
+.btn-reservar {
+    background-color: var(--cor-destaque);
+    color: var(--cor-branca);
+    padding: 12px 28px;
+    border-radius: 30px; 
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-reservar:hover {
+    background-color: #A6472D;
+    color: var(--cor-branca);
+    transform: translateY(-2px); /* Efeito de leve elevação ao passar o mouse */
+}
+
+/* SEÇÃO HERO - Configurada para preencher 85% da altura da tela */
+.hero {
+    height: 85vh; 
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-img {
+    flex: 1;
+    width: 100%;
+}
+
+.hero-content {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero-content h1 {
+    font-size: 52px; 
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: var(--cor-texto);
+}
+
+.hero-content p {
+    font-size: 20px;
+    font-weight: 300;
+    color: #555;
+}
+
+/* SEÇÃO HISTÓRIA e CARROSSEL - Flexbox lado a lado */
+.historia {
+    display: flex;
+    padding: 80px 5%;
+    gap: 60px;
+    align-items: center;
+}
+
+.historia-texto {
+    flex: 1;
+}
+
+.historia-texto h2 {
+    font-size: 40px;
+    margin-bottom: 25px;
+    color: var(--cor-destaque);
+    font-weight: 500;
+}
+
+.carousel-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Imagem principal do Carrossel */
+.carousel-main {
+    position: relative;
+    height: 380px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.carousel-main .img-placeholder {
+    border-radius: 12px;
+}
+
+/* Botões do Carrossel (Avançar/Recuar) */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--cor-texto);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.carousel-btn:hover { 
+    background: var(--cor-branca);
+    transform: translateY(-50%) scale(1.05); /* Efeito de aumento de tamanho */
+}
+
+.carousel-btn.prev { left: 15px; }
+.carousel-btn.next { right: 15px; }
+
+/* Miniaturas do carrossel */
+.carousel-thumbnails {
+    display: flex;
+    gap: 15px;
+    height: 80px;
+    justify-content: center;
+}
+
+.thumb {
+    flex: 1;
+    max-width: 130px;
+    border-radius: 8px; 
+    cursor: pointer;
+    opacity: 0.5; /* Escurece os inativos */
+    transition: opacity 0.3s, border 0.3s;
+    border: 2px solid transparent;
+}
+
+.thumb:hover { opacity: 0.8; }
+/* Classe aplicada via JS para destacar a miniatura ativa */
+.thumb.active { opacity: 1; border-color: var(--cor-destaque); }
+
+/* SEÇÃO VALORES - Layout em Grid responsivo */
+.valores {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: var(--cor-branca); 
+}
+
+.valores h2 {
+    font-size: 40px;
+    margin-bottom: 50px;
+    font-weight: 500;
+}
+
+/* CSS Grid que adapta o número de colunas automaticamente dependendo da tela */
+.grid-valores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Estilo individual de cada card */
+.card-valor {
+    background-color: var(--cor-fundo);
+    padding: 40px 30px;
+    border-radius: 12px;
+    border: 1px solid #E0DCD3;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s;
+}
+
+/* Interatividade: Card sobe ao passar o mouse */
+.card-valor:hover {
+    transform: translateY(-5px);
+}
+
+.card-valor h3 {
+    color: var(--cor-destaque);
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* SEÇÃO EQUIPE - Com fundo escuro e textos claros */
+.equipe {
+    background-color: var(--cor-escura);
+    color: var(--cor-branca);
+    padding: 100px 5%;
+    text-align: center;
+}
+
+.equipe h2 {
+    font-size: 40px;
+    margin-bottom: 60px;
+    font-weight: 500;
+}
+
+/* CSS Grid responsivo para a equipe */
+.grid-equipe {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.card-chef {
+    background-color: rgba(255, 255, 255, 0.03); 
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+/* Efeito Hover elevando o card e iluminando o fundo levemente */
+.card-chef:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.card-chef .img-placeholder {
+    height: 300px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.card-chef h3 {
+    font-size: 26px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.card-chef p.funcao {
+    color: var(--cor-destaque);
+    font-style: italic;
+    font-family: 'Playfair Display', serif; 
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.card-chef p.descricao {
+    font-size: 15px;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+/* SEÇÃO SERVIÇOS - Imagens com efeitos de Overlay */
+.servicos {
+    padding: 100px 5%;
+    text-align: center;
+}
+
+.servicos h2 {
+    font-size: 40px;
+    margin-bottom: 60px;
+    font-weight: 500;
+}
+
+.grid-servicos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+/* Configuração do card base onde as camadas (foto, overlay, texto) se sobrepõem usando posições absolutas */
+.card-servico {
+    position: relative;
+    height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.card-servico .img-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 12px;
+}
+
+/* Camada escura sobre a imagem (Degradê preto) */
+.overlay-escuro {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.1));
+    z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+/* Efeito visual: A sobreposição fica um pouco mais clara no hover */
+.card-servico:hover .overlay-escuro { opacity: 0.8; }
+
+.card-servico h3 {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: var(--cor-branca);
+    z-index: 3;
+    font-size: 32px;
+    font-weight: 500;
+    text-align: left;
+    max-width: 80%;
+}
+
+/* === ESTILIZAÇÃO DOS MODAIS (JANELAS SOBREPOSTAS) === */
+
+/* Container de fundo embaçado (Blur) do Modal. Fica oculto (display: none) por padrão */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(5px);
+}
+
+/* Caixa de conteúdo branco dentro do modal */
+.modal-content {
+    background-color: var(--cor-fundo);
+    margin: 5vh auto; 
+    padding: 40px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    text-align: center;
+    animation: fadeIn 0.3s; /* Animação de surgimento */
+    max-height: 85vh; 
+    overflow-y: auto; /* Adiciona rolagem se a tela for pequena */
+}
+
+/* Customização visual da barra de rolagem dos modais */
+.modal-content::-webkit-scrollbar { width: 8px; }
+.modal-content::-webkit-scrollbar-track { background: #E0DCD3; border-radius: 8px;}
+.modal-content::-webkit-scrollbar-thumb { background: var(--cor-destaque); border-radius: 8px;}
+
+/* Animação que faz o modal surgir de baixo para cima com opacidade */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botão "X" para fechar modais */
+.close-btn {
+    color: var(--cor-texto);
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.close-btn:hover { color: var(--cor-destaque); }
+
+/* Formatação especial para o modal mais largo da Equipe */
+.modal-equipe-content {
+    max-width: 800px; 
+    padding: 50px;
+}
+
+.equipe-expandido-layout {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    text-align: left;
+}
+
+.equipe-left { flex: 1; text-align: center; }
+.equipe-left .img-placeholder { height: 280px; border-radius: 8px; margin-bottom: 15px; }
+.equipe-left h3 { font-size: 28px; color: var(--cor-texto); margin-bottom: 5px; }
+
+.equipe-right { flex: 1.5; }
+.bio-titulo {
+    font-size: 22px; color: var(--cor-destaque); margin-bottom: 15px; font-family: 'Lato', sans-serif; text-transform: uppercase; letter-spacing: 1px;
+}
+.equipe-right p { font-size: 16px; line-height: 1.8; color: #444; }
+
+/* === ESTILOS DO FORMULÁRIO === */
+form {
+    max-width: 100%; 
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Coloca a Data e a Hora um ao lado do outro */
+.form-row { display: flex; gap: 15px; }
+.form-row input { flex: 1; }
+
+input, select {
+    padding: 15px; 
+    border: 1px solid #D5D1C8;
+    border-radius: 8px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    background-color: var(--cor-branca);
+    width: 100%;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--cor-destaque); 
+}
+
+/* Caixa visual dos Horários */
+.aviso-horarios {
+    font-size: 15px;
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+    padding: 15px 20px;
+    border-radius: 8px;
+    text-align: left;
+    border: 1px solid #E0DCD3;
+}
+
+.aviso-titulo {
+    font-weight: 700;
+    color: var(--cor-destaque);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.lista-horarios-modal { list-style: none; padding: 0; margin: 0; }
+.lista-horarios-modal li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    border-bottom: 1px dashed #D5D1C8;
+    padding-bottom: 4px;
+}
+.lista-horarios-modal li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.lista-horarios-modal li span { font-weight: 700; }
+
+button.btn-submit {
+    background-color: var(--cor-destaque);
+    color: var(--cor-branca);
+    padding: 18px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 5px;
+    width: 100%;
+}
+
+button.btn-submit:hover { background-color: #A6472D; }
+
+/* === SUCESSO DE RESERVA (Animação Check) === */
+.circulo-sucesso {
+    width: 90px;
+    height: 90px;
+    background-color: #4CAF50; 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; /* Animação de 'pulo' */
+}
+
+.check-icon { color: white; font-size: 45px; line-height: 1; }
+
+@keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* === RODAPÉ (FOOTER) === */
+footer {
+    background-color: var(--cor-escura);
+    color: var(--cor-branca);
+    padding: 60px 5% 20px 5%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-sobre h3, .footer-contato h3 { font-size: 24px; color: var(--cor-destaque); margin-bottom: 20px;}
+.footer-sobre p, .footer-contato p { font-size: 15px; line-height: 1.8; opacity: 0.9; margin-bottom: 10px;}
+.footer-bottom { text-align: center; opacity: 0.6; font-size: 14px;}
+
+/* === MEDIA QUERIES (Responsividade para telas menores que 768px, como celulares) === */
+@media (max-width: 768px) {
+    /* Faz as caixas que estavam lado a lado ficarem empilhadas (uma embaixo da outra) */
+    .equipe-expandido-layout { flex-direction: column; }
+    .form-row { flex-direction: column; }
+}

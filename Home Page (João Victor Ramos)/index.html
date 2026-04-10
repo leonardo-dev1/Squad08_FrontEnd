@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APOLLO Restaurante Italiano</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="img-placeholder icon-placeholder">Logo</div>
+            <div class="logo">APOLLO</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#historia">História</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#servicos">Experiências</a></li>
+                <li><a href="#" class="btn-reservar" onclick="abrirModalReserva(event)">Reservar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-img">
+                <div class="img-placeholder">Foto Home</div>
+            </div>
+            <div class="hero-content">
+                <h1>Bem-vindo ao Apollo</h1>
+                <p>[...]</p>
+                <p>(Breve Descrição/Mensagem)</p>
+            </div>
+        </section>
+
+        <section id="historia" class="historia">
+            <div class="historia-texto">
+                <h2>Nossa História</h2>
+                <p>História [...]</p>
+            </div>
+            
+            <div class="carousel-container">
+                <div class="carousel-main">
+                    <button class="carousel-btn prev" onclick="mudarImagem(-1)">&#10094;</button>
+                    <div class="img-placeholder" id="imagem-destaque">Foto 1</div>
+                    <button class="carousel-btn next" onclick="mudarImagem(1)">&#10095;</button>
+                </div>
+                <div class="carousel-thumbnails">
+                    <div class="img-placeholder thumb active" onclick="selecionarMiniatura(0)">Mini 1</div>
+                    <div class="img-placeholder thumb" onclick="selecionarMiniatura(1)">Mini 2</div>
+                    <div class="img-placeholder thumb" onclick="selecionarMiniatura(2)">Mini 3</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="valores" class="valores">
+            <h2>Nossa Essência</h2>
+            <div class="grid-valores">
+                <div class="card-valor">
+                    <h3>Missão</h3>
+                    <p>Missão [...]</p>
+                </div>
+                <div class="card-valor">
+                    <h3>Visão</h3>
+                    <p>Visão [...]</p>
+                </div>
+                <div class="card-valor">
+                    <h3>Valores</h3>
+                    <p>Valores [...]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="equipe" class="equipe">
+            <h2>Nossa Equipe</h2>
+            <div class="grid-equipe">
+                <div class="card-chef" onclick="abrirModalEquipe('giovanni')">
+                    <div class="img-placeholder">Foto Chef 1</div>
+                    <h3>Nome</h3>
+                    <p class="funcao">Função</p>
+                    <p class="descricao">Descrição [...]</p>
+                </div>
+                <div class="card-chef" onclick="abrirModalEquipe('sofia')">
+                    <div class="img-placeholder">Foto Chef 2</div>
+                    <h3>Nome</h3>
+                    <p class="funcao">Função</p>
+                    <p class="descricao">Descrição [...]</p>
+                </div>
+                <div class="card-chef" onclick="abrirModalEquipe('lorenzo')">
+                    <div class="img-placeholder">Foto Chef 3</div>
+                    <h3>Nome</h3>
+                    <p class="funcao">Função</p>
+                    <p class="descricao">Descrição [...]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="servicos">
+            <h2>Além do Prato</h2>
+            <div class="grid-servicos">
+                <div class="card-servico" onclick="abrirModal('vinhos')">
+                    <div class="img-placeholder">Foto Vinhos / Adega</div>
+                    <div class="overlay-escuro"></div>
+                    <h3>Seleção de Vinhos Apollo</h3>
+                </div>
+                <div class="card-servico" onclick="abrirModal('workshops')">
+                    <div class="img-placeholder">Foto Pessoas Cozinhando</div>
+                    <div class="overlay-escuro"></div>
+                    <h3>Workshops de Culinária</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-sobre">
+                <h3>Sobre Nós</h3>
+                <p>About us [...]</p>
+            </div>
+            <div class="footer-contato">
+                <h3>Contato & Localização</h3>
+                <p>Endereço</p>
+                <p>Telefone</p>
+                <p>Email</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Apollo Restaurante. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="modal-servicos" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="fecharModal()">&times;</span>
+            <h3 id="modal-titulo">Título</h3>
+            <p id="modal-descricao">Descrição</p>
+        </div>
+    </div>
+
+    <div id="modal-equipe" class="modal">
+        <div class="modal-content modal-equipe-content">
+            <span class="close-btn" onclick="fecharModalEquipe()">&times;</span>
+            <div class="equipe-expandido-layout">
+                <div class="equipe-left">
+                    <div class="img-placeholder" id="modal-equipe-img">Foto do Membro</div>
+                    <h3 id="modal-equipe-nome">Nome do Membro</h3>
+                    <p class="funcao" id="modal-equipe-funcao">Função</p>
+                </div>
+                <div class="equipe-right">
+                    <h4 class="bio-titulo">Biografia</h4>
+                    <p id="modal-equipe-desc">A descrição completa vai aparecer aqui...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-reserva" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="fecharModalReserva()">&times;</span>
+            
+            <div id="reserva-form-view">
+                <h3 style="font-size: 32px; color: var(--cor-destaque); margin-bottom: 25px;">Reserve sua Mesa</h3>
+                <form id="form-reserva" onsubmit="enviarReserva(event)">
+                    <input type="text" placeholder="Seu Nome Completo" required>
+                    <input type="email" placeholder="Seu E-mail" required>
+                    
+                    <div class="form-row">
+                        <input type="date" required title="Data da Reserva">
+                        <input type="time" required title="Horário da Reserva">
+                    </div>
+                    
+                    <select required>
+                        <option value="" disabled selected>Número de Pessoas</option>
+                        <option value="1">1 Pessoa</option>
+                        <option value="2">2 Pessoas</option>
+                        <option value="3">3 Pessoas</option>
+                        <option value="4">4 Pessoas</option>
+                        <option value="5+">5 ou mais Pessoas</option>
+                    </select>
+
+                    <div class="aviso-horarios">
+                        <span class="aviso-titulo">🕐 Nossos Horários:</span>
+                        <ul class="lista-horarios-modal">
+                            <li><span>Terça a Sábado:</span> 19h00 às 23h30</li>
+                            <li><span>Domingo:</span> 12h00 às 16h00</li>
+                            <li><span>Segunda-feira:</span> Fechado</li>
+                        </ul>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Confirmar reserva</button>
+                </form>
+            </div>
+
+            <div id="reserva-sucesso-view" style="display: none; padding: 30px 0;">
+                <div class="circulo-sucesso">
+                    <span class="check-icon">&#10004;</span>
+                </div>
+                <h3 style="font-size: 32px; color: var(--cor-texto); margin-bottom: 10px;">Reserva Solicitada!</h3>
+                <p>Tudo certo. Entraremos em contato em breve para confirmar os detalhes da sua mesa.</p>
+                <button class="btn-submit" style="margin-top: 30px;" onclick="fecharModalReserva()">Voltar ao site</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        /* Variáveis globais para o funcionamento do carrossel */
+        let imagemAtual = 0;
+        const textosDestaque = ["Foto 1", "Foto 2", "Foto 3"];
+        const destaque = document.getElementById("imagem-destaque");
+        const miniaturas = document.querySelectorAll(".thumb");
+
+        /* Função para atualizar a imagem principal e a miniatura ativa do carrossel */
+        function atualizarCarrossel() {
+            destaque.innerText = textosDestaque[imagemAtual];
+            miniaturas.forEach(min => min.classList.remove("active"));
+            miniaturas[imagemAtual].classList.add("active");
+        }
+
+        /* Função disparada pelas setas do carrossel para avançar/retroceder */
+        function mudarImagem(direcao) {
+            imagemAtual += direcao;
+            if (imagemAtual >= miniaturas.length) imagemAtual = 0;
+            if (imagemAtual < 0) imagemAtual = miniaturas.length - 1;
+            atualizarCarrossel();
+        }
+
+        /* Função disparada ao clicar diretamente numa miniatura */
+        function selecionarMiniatura(index) {
+            imagemAtual = index;
+            atualizarCarrossel();
+        }
+
+        /* LÓGICA DO MODAL DE SERVIÇOS */
+        const modalServicos = document.getElementById("modal-servicos");
+        const tituloModal = document.getElementById("modal-titulo");
+        const descModal = document.getElementById("modal-descricao");
+
+        /* Objeto contendo os dados dinâmicos dos serviços */
+        const detalhesServicos = {
+            'vinhos': {
+                titulo: "Seleção de Vinhos Apollo",
+                descricao: "Descrição [...]"
+            },
+            'workshops': {
+                titulo: "Workshops de Culinária",
+                descricao: "Descrição [...]"
+            }
+        };
+
+        /* Abre o modal e injeta o conteúdo de acordo com o card clicado */
+        function abrirModal(servico) {
+            tituloModal.innerText = detalhesServicos[servico].titulo;
+            descModal.innerText = detalhesServicos[servico].descricao;
+            modalServicos.style.display = "block";
+        }
+
+        /* Fecha o modal de serviços */
+        function fecharModal() {
+            modalServicos.style.display = "none";
+        }
+
+        /* LÓGICA DO MODAL DA EQUIPE */
+        const modalEquipe = document.getElementById("modal-equipe");
+        
+        /* Objeto com o banco de dados das informações da equipe */
+        const infoEquipe = {
+            'giovanni': { nome: "Nome", funcao: "Função", foto: "Foto Chef 1", descricao: "Biografia [...]" },
+            'sofia': { nome: "Nome", funcao: "Função", foto: "Foto Chef 2", descricao: "Biografia [...]" },
+            'lorenzo': { nome: "Nome", funcao: "Função", foto: "Foto Chef 3", descricao: "Biografia [...]" }
+        };
+
+        /* Preenche e abre o modal da equipe */
+        function abrirModalEquipe(membro) {
+            document.getElementById("modal-equipe-nome").innerText = infoEquipe[membro].nome;
+            document.getElementById("modal-equipe-funcao").innerText = infoEquipe[membro].funcao;
+            document.getElementById("modal-equipe-desc").innerText = infoEquipe[membro].descricao;
+            document.getElementById("modal-equipe-img").innerText = infoEquipe[membro].foto;
+            modalEquipe.style.display = "block";
+        }
+
+        /* Fecha o modal da equipe */
+        function fecharModalEquipe() {
+            modalEquipe.style.display = "none";
+        }
+
+        /* LÓGICA DO MODAL DE RESERVA */
+        const modalReserva = document.getElementById("modal-reserva");
+        const formView = document.getElementById("reserva-form-view");
+        const sucessoView = document.getElementById("reserva-sucesso-view");
+
+        /* Abre o modal, reseta o formulário e exibe a tela inicial de reserva */
+        function abrirModalReserva(e) {
+            e.preventDefault(); /* Evita o salto na tela padrão da tag <a> */
+            formView.style.display = "block"; 
+            sucessoView.style.display = "none"; 
+            document.getElementById("form-reserva").reset(); 
+            modalReserva.style.display = "block";
+        }
+
+        /* Fecha o modal de reserva */
+        function fecharModalReserva() {
+            modalReserva.style.display = "none";
+        }
+
+        /* Simula o envio do formulário, ocultando-o e mostrando a tela de sucesso */
+        function enviarReserva(e) {
+            e.preventDefault(); /* Evita que a página recarregue ao dar submit no form */
+            formView.style.display = "none"; 
+            sucessoView.style.display = "block"; 
+        }
+
+        /* Função global: fecha qualquer modal ao clicar fora da caixa de conteúdo */
+        window.onclick = function(event) {
+            if (event.target == modalServicos) { modalServicos.style.display = "none"; }
+            if (event.target == modalEquipe) { modalEquipe.style.display = "none"; }
+            if (event.target == modalReserva) { modalReserva.style.display = "none"; }
+        }
+    </script>
+</body>
+</html>
